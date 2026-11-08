@@ -38,24 +38,22 @@
             padding: 32px;
         }
 
-        img {
+        .hero-logo {
             display: block;
-            width: min( min(72vw, 460px), 52vh );
-            width: min(72vw, 460px, 52svh);
+            width: min(72vw, 346px, 45svh);
             height: auto;
-            margin-bottom: -142px;
             filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.32));
-            animation: logo-arrive 850ms cubic-bezier(.2,.75,.25,1) both;
+            animation: fade-in 900ms ease-out both;
         }
 
         h1 {
-            margin: 0 0 2px;
-            color: #fff;
-            font: 750 clamp(1.05rem, 2vw, 1.4rem)/1.25 "Segoe UI", Arial, sans-serif;
-            letter-spacing: 0.015em;
+            margin: 4px 0 2px;
+            color: rgba(255, 255, 255, 0.86);
+            font: 400 clamp(0.95rem, 1.6vw, 1.15rem)/1.45 "Segoe UI", Arial, sans-serif;
+            letter-spacing: 0.01em;
             text-align: center;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-            animation: fade-up 650ms 120ms ease-out both;
+            animation: fade-up 850ms 320ms ease-out both;
         }
 
         .actions {
@@ -82,8 +80,8 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
             box-shadow: 0 5px 18px rgba(0, 0, 0, 0.22);
             cursor: pointer;
-            transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease, border-color 180ms ease;
-            animation: fade-up 650ms 220ms ease-out both;
+            transition: translate 420ms cubic-bezier(.2,.75,.25,1), scale 420ms cubic-bezier(.2,.75,.25,1), box-shadow 420ms ease, filter 420ms ease, border-color 420ms ease;
+            animation: fade-up 850ms 560ms ease-out both;
         }
 
         .download { background: linear-gradient(135deg, #b357c5, #9145b4); }
@@ -108,7 +106,7 @@
             outline-offset: 4px;
         }
 
-        .arrow-mark { transition: transform 180ms ease; }
+        .arrow-mark { transition: transform 420ms cubic-bezier(.2,.75,.25,1); }
         .take-a-look:hover .arrow-mark { transform: translateX(4px); }
 
         .windows-mark {
@@ -126,9 +124,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes logo-arrive {
-            from { opacity: 0; transform: scale(0.96); }
-            to { opacity: 1; transform: scale(1); }
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -142,7 +140,7 @@
 
         @media (max-width: 600px) {
             main { padding: 20px; }
-            img { width: min(82vw, 420px, 48svh); margin-bottom: -100px; }
+            .hero-logo { width: min(78vw, 346px, 40svh); }
             .actions { gap: 10px; }
             .action-button { min-width: 158px; padding-inline: 16px; font-size: 0.84rem; }
         }
@@ -150,7 +148,7 @@
 </head>
 <body>
     <main aria-label="Eclipse Client">
-        <img src="eclipselogo_namenobackground.png" alt="Eclipse">
+        <img class="hero-logo" src="eclipselogo_namenobackground346x346.png" alt="Eclipse">
         <h1>The Coolest Minecraft Launcher</h1>
         <div class="actions" aria-label="Coming soon">
             <button class="action-button download" type="button">
