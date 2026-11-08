@@ -27,6 +27,64 @@
             background-repeat: no-repeat;
         }
 
+        .topbar {
+            position: fixed;
+            z-index: 5;
+            top: 18px;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+            width: min(1060px, calc(100% - 64px));
+            min-height: 64px;
+            padding: 8px 12px 8px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            background: rgba(13, 15, 22, 0.48);
+            -webkit-backdrop-filter: blur(18px) saturate(135%);
+            backdrop-filter: blur(18px) saturate(135%);
+            box-shadow: 0 10px 34px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.08);
+            translate: -50% 0;
+            animation: fade-in 900ms ease-out both;
+        }
+
+        .nav-brand { display: flex; flex: 0 0 auto; align-items: center; }
+        .nav-brand img { display: block; width: 132px; height: auto; }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(12px, 2.2vw, 30px);
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.78);
+            font: 400 0.92rem/1 "Segoe UI", Arial, sans-serif;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 220ms ease;
+        }
+
+        .nav-links a:hover, .nav-links a:focus-visible { color: #fff; }
+
+        .nav-download {
+            flex: 0 0 auto;
+            padding: 11px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.68);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.94);
+            color: #17151c;
+            font: 600 0.9rem/1 "Segoe UI", Arial, sans-serif;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+        }
+
+        .nav-download:hover { transform: translateY(-2px); background: #fff; box-shadow: 0 5px 20px rgba(255, 255, 255, 0.22); }
+        .nav-download:focus-visible, .nav-links a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; border-radius: 4px; }
+
         main {
             display: grid;
             place-items: center;
@@ -130,6 +188,19 @@
         }
 
         @media (max-width: 600px) {
+            .topbar {
+                top: 10px;
+                width: calc(100% - 24px);
+                min-height: 0;
+                padding: 9px 12px;
+                border-radius: 22px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .nav-brand img { width: 108px; }
+            .nav-download { padding: 10px 16px; font-size: 0.82rem; }
+            .nav-links { order: 3; width: 100%; justify-content: space-between; gap: 8px; padding: 5px 2px 2px; }
+            .nav-links a { font-size: 0.78rem; }
             main { padding: 20px; }
             .hero-logo { width: min(78vw, 346px, 40svh); }
             .actions { gap: 10px; }
@@ -138,7 +209,20 @@
     </style>
 </head>
 <body>
-    <main aria-label="Eclipse Client">
+    <header class="topbar" aria-label="Main navigation">
+        <a class="nav-brand" href="#home" aria-label="Eclipse home">
+            <img src="EclipseLogo+Name397x165.png" alt="Eclipse">
+        </a>
+        <nav class="nav-links" aria-label="Main menu">
+            <a href="#features">Features</a>
+            <a href="#changelog">Changelog</a>
+            <a href="#faq">FAQ</a>
+            <a href="#developer">Developer</a>
+            <a href="https://discord.gg/UTsRKEu83X" target="_blank" rel="noopener noreferrer">Discord</a>
+        </nav>
+        <a class="nav-download" href="#download">Download</a>
+    </header>
+    <main id="home" aria-label="Eclipse Client">
         <img class="hero-logo" src="eclipselogo_namenobackground346x346.png" alt="Eclipse">
         <h1>The Coolest Minecraft Launcher</h1>
         <div class="actions" aria-label="Coming soon">
