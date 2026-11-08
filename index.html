@@ -43,7 +43,7 @@
             width: min(72vw, 346px, 45svh);
             height: auto;
             filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.32));
-            animation: fade-in 900ms ease-out both;
+            animation: fade-in 1200ms ease-out both;
         }
 
         h1 {
@@ -53,7 +53,7 @@
             letter-spacing: 0.01em;
             text-align: center;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-            animation: fade-up 850ms 320ms ease-out both;
+            animation: fade-up 1000ms 450ms ease-out both;
         }
 
         .actions {
@@ -80,8 +80,8 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
             box-shadow: 0 5px 18px rgba(0, 0, 0, 0.22);
             cursor: pointer;
-            transition: translate 420ms cubic-bezier(.2,.75,.25,1), scale 420ms cubic-bezier(.2,.75,.25,1), box-shadow 420ms ease, filter 420ms ease, border-color 420ms ease;
-            animation: fade-up 850ms 560ms ease-out both;
+            transition: translate 650ms cubic-bezier(.2,.75,.25,1), scale 650ms cubic-bezier(.2,.75,.25,1), box-shadow 650ms ease, filter 650ms ease, border-color 650ms ease;
+            animation: fade-up 1000ms 850ms ease-out both;
         }
 
         .download { background: linear-gradient(135deg, #b357c5, #9145b4); }
@@ -106,7 +106,7 @@
             outline-offset: 4px;
         }
 
-        .arrow-mark { transition: transform 420ms cubic-bezier(.2,.75,.25,1); }
+        .arrow-mark { transition: transform 650ms cubic-bezier(.2,.75,.25,1); }
         .take-a-look:hover .arrow-mark { transform: translateX(4px); }
 
         .windows-mark {
@@ -127,15 +127,6 @@
         @keyframes fade-in {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-            }
         }
 
         @media (max-width: 600px) {
