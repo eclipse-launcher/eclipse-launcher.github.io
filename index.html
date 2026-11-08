@@ -30,6 +30,8 @@
         main {
             display: grid;
             place-items: center;
+            align-content: center;
+            gap: 12px;
             width: 100%;
             min-height: 100vh;
             min-height: 100svh;
@@ -44,15 +46,73 @@
             filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.32));
         }
 
+        h1 {
+            margin: -8px 0 8px;
+            color: #fff;
+            font: 800 clamp(1.25rem, 3vw, 2rem)/1.2 "Segoe UI", Arial, sans-serif;
+            letter-spacing: 0.015em;
+            text-align: center;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 174px;
+            min-height: 48px;
+            padding: 0 22px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 7px;
+            color: #fff;
+            font: 750 0.95rem/1 "Segoe UI", Arial, sans-serif;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.22);
+            cursor: default;
+        }
+
+        .download { background: #a750b8; }
+        .take-a-look { background: #398eae; }
+
+        .windows-mark {
+            display: grid;
+            grid-template-columns: repeat(2, 7px);
+            grid-template-rows: repeat(2, 7px);
+            gap: 2px;
+            transform: skewY(-7deg);
+        }
+
+        .windows-mark span { background: currentColor; }
+
         @media (max-width: 600px) {
             main { padding: 20px; }
             img { width: min(82vw, 420px, 48svh); }
+            .actions { gap: 10px; }
+            .action-button { min-width: 158px; padding-inline: 16px; font-size: 0.84rem; }
         }
     </style>
 </head>
 <body>
     <main aria-label="Eclipse Client">
         <img src="eclipselogo_namenobackground.png" alt="Eclipse">
+        <h1>The Coolest Minecraft Launcher</h1>
+        <div class="actions" aria-label="Coming soon">
+            <button class="action-button download" type="button">
+                <span class="windows-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+                Download for
+            </button>
+            <button class="action-button take-a-look" type="button">Take a look</button>
+        </div>
     </main>
 </body>
 </html>
