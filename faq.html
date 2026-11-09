@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08090d">
+    <title>FAQ | Eclipse Client</title>
+    <meta name="description" content="Answers to common questions about Eclipse Client, setup, compatibility, safety, and support.">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    <style>
+        * { box-sizing: border-box; }
+        html { min-height: 100%; scroll-behavior: smooth; }
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 36px 24px 72px;
+            color: #f2f1f5;
+            background: #08090d;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+        .page { width: min(100%, 900px); margin: 0 auto; }
+        .eyebrow { margin: 0 0 8px; color: #a7a6b1; font-size: 0.9rem; }
+        h1 { margin: 0; font-size: clamp(2.4rem, 7vw, 4.3rem); font-weight: 650; letter-spacing: -0.045em; line-height: 1.08; }
+        .intro { margin: 18px 0 44px; color: #b9b8c2; font-size: 1.1rem; }
+        .intro a { color: #eee7ff; text-underline-offset: 3px; }
+        .faq-list { width: min(100%, 704px); margin: 0 auto; }
+        .group-title { margin: 30px 0 12px; color: #c9c7d0; font-size: 1rem; font-weight: 650; }
+        .faq-item {
+            margin: 0 0 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 22px;
+            background: linear-gradient(145deg, rgba(34, 34, 39, 0.88), rgba(18, 18, 22, 0.94));
+            box-shadow: inset 0 1px rgba(255, 255, 255, 0.035), 0 8px 22px rgba(0, 0, 0, 0.15);
+            transition: border-color 220ms ease, background 220ms ease;
+        }
+        .faq-item[open] { border-color: rgba(211, 190, 255, 0.35); background: linear-gradient(145deg, rgba(37, 35, 43, 0.96), rgba(18, 18, 22, 0.98)); }
+        summary {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            min-height: 64px;
+            padding: 18px 24px;
+            color: #f0eff3;
+            font-size: 1rem;
+            font-weight: 650;
+            line-height: 1.45;
+            list-style: none;
+            cursor: pointer;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after {
+            width: 9px;
+            height: 9px;
+            flex: 0 0 9px;
+            border-right: 1.5px solid #c8c6d0;
+            border-bottom: 1.5px solid #c8c6d0;
+            content: "";
+            transform: rotate(45deg) translateY(-2px);
+            transition: transform 220ms ease;
+        }
+        .faq-item[open] summary::after { transform: rotate(225deg) translate(-2px, -1px); }
+        summary:focus-visible { outline: 2px solid #d5bcff; outline-offset: -4px; border-radius: 20px; }
+        .answer { padding: 0 24px 22px; color: #bdbbc5; font-size: 0.98rem; line-height: 1.65; }
+        .answer p { margin: 0 0 14px; }
+        .answer p:last-child { margin-bottom: 0; }
+        .answer a { color: #e2d3ff; text-underline-offset: 3px; }
+        code { padding: 2px 6px; border-radius: 5px; background: rgba(255,255,255,.09); color: #e8e5ed; font: 0.9em ui-monospace, Consolas, monospace; }
+        @media (max-width: 600px) {
+            body { padding: 26px 16px 48px; }
+            .intro { margin-bottom: 30px; }
+            summary { padding: 16px 18px; font-size: 0.95rem; }
+            .answer { padding: 0 18px 20px; font-size: 0.94rem; }
+            .faq-item { border-radius: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <p class="eyebrow">FAQ</p>
+        <h1>Frequently asked questions</h1>
+        <p class="intro">Can’t find your answer? <a href="https://discord.gg/acwwts2SWt" target="_blank" rel="noopener noreferrer">Get in touch on Discord.</a></p>
+
+        <section class="faq-list" aria-label="Frequently asked questions">
+            <h2 class="group-title">General &amp; Safety</h2>
+            <details class="faq-item">
+                <summary>1. What is Eclipse Launcher?</summary>
+                <div class="answer"><p>Eclipse is a lightweight, custom Minecraft: Java Edition launcher and client modpack designed for speed, clean customization, and hassle-free mod management—built to get you into your game faster without bloated menus.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>2. Is Eclipse Launcher safe and free to use?</summary>
+                <div class="answer"><p>Yes, Eclipse is 100% free to use. Your account security is a top priority—we never ask for or store your Microsoft password; all official login authentication is handled securely through Microsoft OAuth.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>3. Is this a hacked client?</summary>
+                <div class="answer"><p>No, not at all! Eclipse is a legitimate, standard client for Minecraft: Java Edition—just like other popular PvP and performance clients. It only includes client-side performance boosts and visual quality-of-life features, with zero unfair advantages or cheats. <em>As always, check specific server rules if you decide to add extra third-party mods on your own.</em></p></div>
+            </details>
+            <details class="faq-item">
+                <summary>4. What about other “Eclipse” modpacks on Modrinth, GitHub launchers, or Bedrock hacked clients?</summary>
+                <div class="answer"><p>Those are completely separate, abandoned projects that nobody uses anymore, and they have zero affiliation with us. Make sure you are only downloading from our official website: <a href="https://eclipse-launcher.github.io/">https://eclipse-launcher.github.io/</a></p></div>
+            </details>
+            <details class="faq-item">
+                <summary>5. Who created Eclipse Client?</summary>
+                <div class="answer"><p>Eclipse is created and maintained by Omar Hasan Arman, a solo developer and student who loves building cool, fast, and customizable software from scratch.</p></div>
+            </details>
+
+            <h2 class="group-title">Compatibility &amp; Setup</h2>
+            <details class="faq-item">
+                <summary>6. Can I play with an offline account?</summary>
+                <div class="answer"><p>Yes, offline accounts are supported! However, keep in mind that playing offline comes with limitations—such as custom skins not loading properly and not being able to join online-mode premium servers. For the full experience, you can easily sign in using your official Microsoft account.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>7. Which Minecraft versions, mod loaders, and operating systems are supported?</summary>
+                <div class="answer"><p>Eclipse runs on Windows (64-bit) and gives you full freedom over how you play. It works both as a standalone launcher supporting all major versions and mod loaders (Fabric, Forge, Vanilla, etc.) and as an optional, fully customizable Client Modpack—the choice is yours.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>8. Can I add my own mods, shaders, or resource packs?</summary>
+                <div class="answer"><p>Absolutely. You can drop your own compatible <code>.jar</code> mods, shaders, and resource packs directly into your instance folder without breaking any of the built-in client features.</p></div>
+            </details>
+
+            <h2 class="group-title">Troubleshooting &amp; Support</h2>
+            <details class="faq-item">
+                <summary>9. Windows SmartScreen showed a warning when I ran the installer. Why?</summary>
+                <div class="answer"><p>Because Eclipse is an independent project built by a solo developer without a costly corporate code-signing certificate, Windows may show an “Unknown Publisher” prompt on new releases. Simply click <strong>More info → Run anyway</strong> to proceed safely.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>10. My game is lagging or won’t launch. How do I fix it?</summary>
+                <div class="answer"><p>First, check your RAM allocation in Eclipse’s settings (4 GB is recommended for smooth gameplay—make sure you don’t allocate all of your PC’s memory!). Also ensure you have the proper Java runtime installed and your graphics drivers are up to date.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>11. Where can I report a bug or suggest a new feature?</summary>
+                <div class="answer"><p>Join our <a href="https://discord.gg/acwwts2SWt" target="_blank" rel="noopener noreferrer">official Discord server</a> using the button at the top of the page! Drop your bug reports, crash logs, or feature ideas in the support channels and we’ll look into them.</p></div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>
