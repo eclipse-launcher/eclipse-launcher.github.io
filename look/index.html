@@ -12,34 +12,41 @@
         * { box-sizing: border-box; }
         html { scrollbar-color: rgba(171,91,233,.82) rgba(20,18,29,.45); scrollbar-width: thin; }
         body { margin:0; min-height:100vh; padding:128px 24px 72px; color:#f3f1f7; font-family:"Segoe UI",Arial,sans-serif; background:linear-gradient(rgba(5,6,10,.76),rgba(5,6,10,.9)),url("../minecraft-2nd-eclipse-wallpaper.jpg") center/cover fixed; }
-        .topbar { position:fixed; z-index:5; top:18px; left:50%; width:min(1060px,calc(100% - 64px)); min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:22px; padding:8px 12px 8px 22px; border:1px solid rgba(255,255,255,.18); border-radius:999px; background:rgba(13,15,22,.52); backdrop-filter:blur(18px) saturate(135%); box-shadow:0 10px 34px rgba(0,0,0,.24); translate:-50% 0; }
+        .topbar { position:fixed; z-index:5; top:18px; left:50%; width:min(1060px,calc(100% - 64px)); min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:22px; padding:8px 12px 8px 22px; border:1px solid rgba(255,255,255,.18); border-radius:999px; background:rgba(13,15,22,.52); backdrop-filter:blur(18px) saturate(135%); box-shadow:0 10px 34px rgba(0,0,0,.24); translate:-50% 0; animation:fade-in .8s ease-out both; }
         .brand img { display:block; width:132px; }
         nav { display:flex; gap:clamp(12px,2.2vw,30px); align-items:center; }
         nav a { color:#dedce5; font-size:.92rem; text-decoration:none; white-space:nowrap; }
         nav a:hover { color:#fff; }
         .download { padding:11px 22px; border-radius:999px; color:#17151c; background:#f5f4f7; font-size:.9rem; text-decoration:none; white-space:nowrap; }
         main { width:min(1120px,100%); margin:auto; }
-        .eyebrow { color:#c5b2e6; letter-spacing:.12em; text-transform:uppercase; font-size:.88rem; }
-        h1 { margin:8px 0 12px; font-size:clamp(2.5rem,6vw,4.5rem); letter-spacing:-.05em; line-height:1.04; }
-        .intro { max-width:700px; margin:0 0 38px; color:#c5c3ce; font-size:1.1rem; line-height:1.6; }
-        h2 { margin:34px 0 16px; font-size:1.35rem; }
-        .gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
-        figure { overflow:hidden; margin:0; border:1px solid rgba(255,255,255,.17); border-radius:18px; background:rgba(13,17,29,.8); backdrop-filter:blur(12px); box-shadow:0 14px 35px rgba(0,0,0,.25); }
-        figure img { display:block; width:100%; height:auto; transition:transform 500ms cubic-bezier(.2,.75,.25,1); }
-        figure:hover img { transform:scale(1.025); }
+        .eyebrow { color:#c5b2e6; letter-spacing:.12em; text-transform:uppercase; font-size:.88rem; animation:fade-up .7s .12s both; }
+        h1 { margin:8px 0 12px; font-size:clamp(2.5rem,6vw,4.5rem); letter-spacing:-.05em; line-height:1.04; animation:fade-up .8s .24s both; }
+        .intro { max-width:700px; margin:0 0 38px; color:#c5c3ce; font-size:1.1rem; line-height:1.6; animation:fade-up .8s .38s both; }
+        h2 { margin:34px 0 16px; font-size:1.35rem; animation:fade-up .8s .5s both; }
+        .gallery { width:min(100%,1000px); margin:0 auto; }
+        figure { overflow:hidden; margin:0; border:1px solid rgba(255,255,255,.17); border-radius:18px; background:rgba(13,17,29,.8); backdrop-filter:blur(12px); box-shadow:0 14px 35px rgba(0,0,0,.25); animation:fade-up .9s .6s both; }
+        figure img { display:block; width:100%; height:auto; max-height:66vh; object-fit:contain; background:#080b14; }
         figcaption { padding:17px 19px 20px; }
         figcaption strong { display:block; margin-bottom:6px; font-size:1.02rem; }
         figcaption span { color:#b9b7c2; line-height:1.5; font-size:.94rem; }
-        .client { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:24px; border:1px solid rgba(202,160,255,.25); border-radius:18px; background:rgba(37,25,53,.6); }
+        .gallery-controls { display:flex; align-items:center; justify-content:center; gap:14px; margin:20px 0 44px; animation:fade-up .8s .75s both; }
+        .gallery-controls button { display:grid; place-items:center; width:44px; height:44px; border:1px solid rgba(255,255,255,.2); border-radius:50%; color:#fff; background:rgba(255,255,255,.08); font-size:1.35rem; cursor:pointer; transition:background .25s,transform .25s; }
+        .gallery-controls button:hover { background:rgba(174,100,230,.35); transform:scale(1.07); }
+        .dots { display:flex; gap:8px; }
+        .dots button { width:9px; height:9px; padding:0; border:0; background:rgba(255,255,255,.35); }
+        .dots button[aria-current="true"] { background:#cf9bff; box-shadow:0 0 12px #a353f0; }
+        .client { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:24px; border:1px solid rgba(202,160,255,.25); border-radius:18px; background:rgba(37,25,53,.6); animation:fade-up .8s .9s both; }
         .client p { margin:6px 0 0; color:#c5c0cf; }
         .badge { flex:none; padding:8px 12px; border:1px solid rgba(214,180,255,.32); border-radius:999px; color:#e4ccff; background:rgba(159,100,213,.18); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; }
-        @media(max-width:700px){ body{padding:140px 16px 50px;background-attachment:scroll}.topbar{top:10px;width:calc(100% - 24px);padding:9px 12px;border-radius:22px;flex-wrap:wrap;gap:10px}.brand img{width:108px}.download{padding:10px 16px;font-size:.82rem}nav{order:3;width:100%;justify-content:space-between;gap:8px}nav a{font-size:.78rem}.gallery{grid-template-columns:1fr;gap:14px}.client{align-items:flex-start;flex-direction:column} }
+        @keyframes fade-up { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fade-in { from{opacity:0} to{opacity:1} }
+        @media(max-width:700px){ body{padding:140px 16px 50px;background-attachment:scroll}.topbar{top:10px;width:calc(100% - 24px);padding:9px 12px;border-radius:22px;flex-wrap:wrap;gap:10px}.brand img{width:108px}.download{padding:10px 16px;font-size:.82rem}nav{order:3;width:100%;justify-content:space-between;gap:8px}nav a{font-size:.78rem}.client{align-items:flex-start;flex-direction:column}figure img{max-height:none} }
     </style>
 </head>
 <body>
     <header class="topbar">
         <a class="brand" href="/" aria-label="Eclipse home"><img src="../EclipseLogo+Name397x165.png" alt="Eclipse"></a>
-        <nav aria-label="Main navigation"><a href="/features/">Features</a><a href="/faq/">FAQ</a><a href="https://discord.gg/acwwts2SWt" target="_blank" rel="noopener noreferrer">Discord</a></nav>
+        <nav aria-label="Main navigation"><a href="/features/">Features</a><a href="/#changelog">Changelog</a><a href="/faq/">FAQ</a><a href="https://discord.gg/acwwts2SWt" target="_blank" rel="noopener noreferrer">Discord</a></nav>
         <a class="download" href="/#download">Download</a>
     </header>
     <main>
@@ -48,11 +55,9 @@
         <p class="intro">Explore the Eclipse Launcher, from your instance dashboard to built-in Modrinth browsing, account profiles, and personal settings.</p>
         <section aria-labelledby="launcher-title">
             <h2 id="launcher-title">Eclipse Launcher</h2>
-            <div class="gallery">
-                <figure><img src="launcher/home-page.png" alt="Eclipse Launcher home screen with Minecraft news, instances, friends, and quick launch panels" loading="lazy"><figcaption><strong>Your launcher home</strong><span>See your instances, catch up on Minecraft news, and reach pinned launches from one dashboard.</span></figcaption></figure>
-                <figure><img src="launcher/modrinthModInstalling-page.png" alt="Eclipse Launcher Modrinth browser showing mod search results for a selected Minecraft instance" loading="lazy"><figcaption><strong>Browse with Modrinth</strong><span>Find mods, resource packs, and shaders matched to the selected instance.</span></figcaption></figure>
-                <figure><img src="launcher/profile-page.png" alt="Eclipse Launcher profiles and accounts page with account notes and a skin viewer" loading="lazy"><figcaption><strong>Profiles and skins</strong><span>Manage player profiles, keep account notes, and view skins in one place.</span></figcaption></figure>
-                <figure><img src="launcher/settings-page.png" alt="Eclipse Launcher settings page showing playtime tracking and Minecraft news preferences" loading="lazy"><figcaption><strong>Make it yours</strong><span>Adjust launcher preferences and see playtime totals and instance-by-instance breakdowns.</span></figcaption></figure>
+            <div class="gallery" aria-live="polite">
+                <figure><img id="preview-image" src="launcher/home-page.png" alt="Eclipse Launcher home screen with Minecraft news, instances, friends, and quick launch panels"><figcaption><strong id="preview-title">Your launcher home</strong><span id="preview-caption">See your instances, catch up on Minecraft news, and reach pinned launches from one dashboard.</span></figcaption></figure>
+                <div class="gallery-controls" aria-label="Screenshot navigation"><button type="button" id="previous" aria-label="Previous screenshot">‹</button><div class="dots" id="dots"></div><button type="button" id="next" aria-label="Next screenshot">›</button></div>
             </div>
         </section>
         <section aria-labelledby="client-title">
@@ -60,5 +65,27 @@
             <div class="client"><div><strong>Client previews are on the way</strong><p>The in-game client is still in development. We’ll share screenshots when they’re ready.</p></div><span class="badge">Coming soon</span></div>
         </section>
     </main>
+    <script>
+        const previews = [
+            ["launcher/home-page.png", "Your launcher home", "See your instances, catch up on Minecraft news, and reach pinned launches from one dashboard.", "Eclipse Launcher home screen with Minecraft news, instances, friends, and quick launch panels"],
+            ["launcher/modrinthModInstalling-page.png", "Browse with Modrinth", "Find mods, resource packs, and shaders matched to the selected instance.", "Eclipse Launcher Modrinth browser showing mod search results for a selected Minecraft instance"],
+            ["launcher/profile-page.png", "Profiles and skins", "Manage player profiles, keep account notes, and view skins in one place.", "Eclipse Launcher profiles and accounts page with account notes and a skin viewer"],
+            ["launcher/settings-page.png", "Make it yours", "Adjust launcher preferences and see playtime totals and instance-by-instance breakdowns.", "Eclipse Launcher settings page showing playtime tracking and Minecraft news preferences"]
+        ];
+        let current = 0;
+        const dots = document.getElementById("dots");
+        const show = (index) => {
+            current = (index + previews.length) % previews.length;
+            const [src, title, caption, alt] = previews[current];
+            const image = document.getElementById("preview-image");
+            image.style.opacity = "0";
+            setTimeout(() => { image.src = src; image.alt = alt; document.getElementById("preview-title").textContent = title; document.getElementById("preview-caption").textContent = caption; image.style.opacity = "1"; }, 140);
+            [...dots.children].forEach((dot, i) => dot.setAttribute("aria-current", String(i === current)));
+        };
+        previews.forEach((_, i) => { const dot = document.createElement("button"); dot.type = "button"; dot.setAttribute("aria-label", `Show screenshot ${i + 1}`); dot.addEventListener("click", () => show(i)); dots.append(dot); });
+        document.getElementById("previous").addEventListener("click", () => show(current - 1));
+        document.getElementById("next").addEventListener("click", () => show(current + 1));
+        show(0);
+    </script>
 </body>
 </html>
