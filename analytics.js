@@ -1,22 +1,20 @@
-// Eclipse Client GA4 tag and interaction events.
+// Eclipse Client Google Tag Manager loader and interaction events.
 (() => {
-    const measurementId = "G-79WVFS57QH";
+    const containerId = "GTM-MWVDJP7H";
     window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-    window.gtag("js", new Date());
-    window.gtag("config", measurementId, { send_page_view: true, transport_type: "beacon" });
-
+    window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    const firstScript = document.getElementsByTagName("script")[0];
     const tag = document.createElement("script");
     tag.async = true;
-    tag.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-    document.head.appendChild(tag);
+    tag.src = `https://www.googletagmanager.com/gtm.js?id=${containerId}`;
+    firstScript.parentNode.insertBefore(tag, firstScript);
 
     document.addEventListener("click", (event) => {
         const link = event.target.closest("a");
         const button = event.target.closest("button");
         const summary = event.target.closest("summary");
         const element = link || button || summary;
-        if (!element || typeof window.gtag !== "function") return;
+        if (!element) return;
 
         const label = (element.getAttribute("aria-label") || element.textContent || "").trim().replace(/\s+/g, " ").slice(0, 100);
         const url = link ? link.href : "";
@@ -27,7 +25,8 @@
         else if (summary) eventName = "faq_toggle";
         else if (button) eventName = "button_click";
 
-        window.gtag("event", eventName, {
+        window.dataLayer.push({
+            event: eventName,
             link_text: label,
             link_url: url,
             page_path: window.location.pathname
