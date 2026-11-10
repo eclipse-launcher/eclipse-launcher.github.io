@@ -73,32 +73,42 @@
             ["launcher/settings-page.png", "Make it yours", "Adjust launcher preferences and see playtime totals and instance-by-instance breakdowns.", "Eclipse Launcher settings page showing playtime tracking and Minecraft news preferences"]
         ];
         let current = 0;
+        let isAnimating = false;
         const dots = document.getElementById("dots");
-        const show = (index) => {
+        const updateDots = () => [...dots.children].forEach((dot, i) => dot.setAttribute("aria-current", String(i === current)));
+        const show = async (index) => {
+            if (isAnimating) return;
             const direction = index >= current ? 1 : -1;
-            current = (index + previews.length) % previews.length;
-            const [src, title, caption, alt] = previews[current];
+            const nextIndex = (index + previews.length) % previews.length;
+            if (nextIndex === current) return;
+            isAnimating = true;
+            const [src, title, caption, alt] = previews[nextIndex];
             const image = document.getElementById("preview-image");
-            const slideOut = image.animate(
-                [{ opacity: 1, transform: "translateX(0)" }, { opacity: 0, transform: `translateX(${-direction * 44}px)` }],
-                { duration: 180, easing: "ease-in", fill: "forwards" }
-            );
-            slideOut.onfinish = () => {
+            const incoming = new Image();
+            incoming.src = src;
+            try { await incoming.decode(); } catch {}
+            image.getAnimations().forEach((animation) => animation.cancel());
+            await image.animate(
+                [{ opacity: 1, transform: "translateX(0)" }, { opacity: 0, transform: `translateX(${-direction * 56}px)` }],
+                { duration: 260, easing: "cubic-bezier(.4,0,1,1)" }
+            ).finished;
                 image.src = src;
                 image.alt = alt;
                 document.getElementById("preview-title").textContent = title;
                 document.getElementById("preview-caption").textContent = caption;
-                image.animate(
-                    [{ opacity: 0, transform: `translateX(${direction * 44}px)` }, { opacity: 1, transform: "translateX(0)" }],
-                    { duration: 440, easing: "cubic-bezier(.22,1,.36,1)" }
-                );
-            };
-            [...dots.children].forEach((dot, i) => dot.setAttribute("aria-current", String(i === current)));
+                image.getAnimations().forEach((animation) => animation.cancel());
+                await image.animate(
+                    [{ opacity: 0, transform: `translateX(${direction * 56}px)` }, { opacity: 1, transform: "translateX(0)" }],
+                    { duration: 520, easing: "cubic-bezier(.22,1,.36,1)" }
+                ).finished;
+            current = nextIndex;
+            updateDots();
+            isAnimating = false;
         };
         previews.forEach((_, i) => { const dot = document.createElement("button"); dot.type = "button"; dot.setAttribute("aria-label", `Show screenshot ${i + 1}`); dot.addEventListener("click", () => show(i)); dots.append(dot); });
         document.getElementById("previous").addEventListener("click", () => show(current - 1));
         document.getElementById("next").addEventListener("click", () => show(current + 1));
-        show(0);
+        updateDots();
     </script>
 </body>
 </html>
