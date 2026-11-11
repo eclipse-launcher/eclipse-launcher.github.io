@@ -20,4 +20,8 @@
     <loc>https://eclipse-launcher.github.io/privacy/</loc>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://eclipse-launcher.github.io/terms/</loc>
+    <priority>0.5</priority>
+  </url>
 </urlset>
